@@ -5,7 +5,7 @@ using namespace std;
 
 int dadoAleatorio (){
     int num;
-    num =rand() % 6 + 1;
+    num = rand() % 6 + 1;
     return num;
 }
 
@@ -13,59 +13,56 @@ int main(){
 
     srand(time(0));
 
-    int x, d = 0, contador = 0;
-    int y = dadoAleatorio();
+    int dado = 0, contador = 0;
     int face[6] = {0,0,0,0,0,0};
-    float d1[6] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    float porFace[6] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
-    cout << "jogue o dado \n";
-    cin >> d;
+    cout << "Digite a quantidade de vezes: ";
+    cin >> contador;
 
-    while(d != 0){
+    while(contador!= 0){
 
-        contador++;
+        for(int i = 0; i < contador; i++){
+            dado = dadoAleatorio();
+            cout <<""<< i+1<<" jogada = " << dado << "\n";
 
-        switch (d){
-            case 1:{
-                face[0] = face[0]+ 1;
-                cout << "face 1 = "<<face[0]<<"\n";
-                break;
-            }
-             case 2:{
-                face[1] = face[1] + 1;
-                 cout << "face 1 = "<<face[1]<<"\n";
-                break;
-            }
-             case 3:{
-                face[2]++;
-                 cout << "face 1 = "<<face[0]<<"\n";
-                break;
-            }
-             case 4:{
-                face[3]++;
-                 cout << "face 1 = "<<face[0]<<"\n";
-                break;
-            }
-             case 5:{
-                face[4]++;
-                 cout << "face 1 = "<<face[0]<<"\n";
-                break;
-            }
-             case 6:{
-                face[5]++;
-                cout << "face 1 = "<<face[0]<<"\n";
-                break;
+            switch (dado){
+                case 1:{
+                    face[0]++;
+                    break;
+                }
+                 case 2:{
+                    face[1]++;
+                    break;
+                }
+                 case 3:{
+                    face[2]++;
+                    break;
+                }
+                 case 4:{
+                    face[3]++;
+                    break;
+                }
+                 case 5:{
+                    face[4]++;
+                    break;
+                }
+                 case 6:{
+                    face[5]++;
+                    break;
+                }
             }
         }
-        cout << "jogue o dado \n";
-        cin >> d;
-      }
+        cout << "\n";
+        for(int i = 0; i < 6; i++){
+            porFace[i] = face[i] * 100.0 / contador;
+            cout << "Face " << i+1 << " caiu "<< face[i]<< " vez(es) (" << porFace[i] << "%).\n";
+            face[i] = 0;
+        }
 
-
-   for(int i = 0; i <= 6; i++){
-        d1[1] = face[i] / contador * 100;
-        cout << "Face " << i+1 << " = " << d1[i] << " porcento.\n";
-   }
+        cout << "\nDigite a quantidade de vezes: ";
+        cin >> contador;
+    }
 
     return 0;
 
